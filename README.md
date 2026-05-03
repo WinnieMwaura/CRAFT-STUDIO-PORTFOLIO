@@ -72,59 +72,7 @@ npm run test:ui
 
 ---
 
-## Project Structure
 
-```
-src/
-├── components/
-│   ├── Navbar.jsx          # Sticky top navigation with Add Project button
-│   ├── Hero.jsx            # Landing hero section with stats
-│   ├── ProjectGrid.jsx     # Grid container, receives filtered projects
-│   ├── ProjectCard.jsx     # Individual project card with detail trigger
-│   ├── ProjectDetail.jsx   # Slide-up detail panel (modal)
-│   ├── SearchBar.jsx       # Controlled search input
-│   ├── FilterBar.jsx       # Category filter pill buttons
-│   ├── AddProjectModal.jsx # Validated form modal to add projects
-│   └── Footer.jsx          # Site footer
-├── data/
-│   └── projects.js         # Seed data for initial projects
-├── styles/
-│   ├── global.css          # Design tokens, resets, font imports
-│   ├── Navbar.css
-│   ├── Hero.css
-│   ├── ProjectGrid.css
-│   ├── ProjectCard.css
-│   ├── ProjectDetail.css
-│   ├── SearchBar.css
-│   ├── FilterBar.css
-│   ├── AddProjectModal.css
-│   └── Footer.css
-├── tests/
-│   ├── setup.js            # Jest DOM setup
-│   ├── components.test.jsx # Unit tests for SearchBar, FilterBar, AddProjectModal
-│   └── App.test.jsx        # Integration tests for full app flows
-├── App.jsx                 # Root component, global state management
-└── main.jsx                # React DOM entry point
-```
-
----
-
-## Component Tree & State
-
-```
-App (state: projects[], searchQuery, activeFilter, isModalOpen)
-├── Navbar             → onAddProject (prop)
-├── Hero
-├── main
-│   └── ProjectGrid    → projects[], searchQuery, onSearchChange,
-│       │                activeFilter, onFilterChange, categories[]
-│       ├── SearchBar  → value, onChange
-│       ├── FilterBar  → categories[], active, onSelect
-│       └── ProjectCard[] → project (prop)
-│           └── ProjectDetail → project, onClose
-├── Footer
-└── AddProjectModal (conditional) → onClose, onSubmit, categories[]
-```
 
 State is owned at the `App` level and passed down as props. No external state library is needed given the app's scope.
 
